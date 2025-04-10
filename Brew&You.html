@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Coffee Shop</title>
+ 
+<link rel="icon" href="images/logo-favicon.png" type="image/png">
+<link rel="shortcut icon" href="images/logo-favicon.png" type="image/png">
+
+
+  <link href="https://unpkg.com/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="Brew&You.css" />
+</head>
+<body>
+
+    <div class="navbar container">
+        <div class="brand">
+          <img src="images/logo-icon-transparent.png" alt="Coffee Logo" class="logo" />
+          <span class="brand-name">Brew & You</span>
+        </div>
+      
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#">Home</a></li>
+          <li><a href="#featured">Shop</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#site-footer">Contact</a></li>
+        </ul>
+      
+        <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <!-- Cart and Notification Icons using Boxicons -->
+        <div class="nav-icons">
+          <div class="icon-container">
+            <i class="bx bx-cart" id="cartIcon"></i> <!-- Cart icon -->
+            <span class="cart-counter" id="cartCounter">0</span>
+          </div>
+          <div class="icon-container">
+            <i class="bx bx-bell" id="notificationIcon"></i> <!-- Notification icon -->
+            <span class="notification-counter" id="notificationCounter">0</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Cart Dropdown -->
+<div class="cart-dropdown" id="cartDropdown">
+    <h3>Your Cart</h3>
+    <ul id="cartItems"></ul>
+    <div class="cart-summary">
+      <p>Total: ₦<span id="cartTotal">0</span></p>
+      <button id="clearCartBtn">Clear Cart</button>
+      <button id="checkoutBtn">Checkout</button>
+    </div>
+  </div>
+  
+  <!-- Notification Page -->
+  <div class="notification-page" id="notificationPage">
+    <h3>Notifications</h3>
+    <div class="filters">
+      <button onclick="filterNotifications('all')">All</button>
+      <button onclick="filterNotifications('read')">Read</button>
+      <button onclick="filterNotifications('unread')">Unread</button>
+    </div>
+    <ul id="notificationList"></ul>
+     <!-- Clear All Notifications Button -->
+  <button onclick="clearAllNotifications()" class="one">Clear All Notifications</button>
+
+  <!-- Clear Only Read Notifications Button -->
+  <button onclick="clearReadNotifications()" class="two">Clear Read Notifications</button>
+  </div>
+  
+
+      <section class="hero">
+        <div class="hero-container">
+            <!-- Video Slides -->
+            <div class="hero-slides">
+                <!-- Slide 1 -->
+                <div class="slide active">
+                    <video src="videos/VID-20250409-WA0005.mp4" autoplay muted loop class="slide-video"></video>
+                    <div class="slide-content">
+                        <h1 class="headline">Fresh Brewed Coffee</h1>
+                        <p class="subheadline">Experience the finest coffee beans brewed to perfection.</p>
+                        <div class="cta-buttons">
+                            <a href="https://wa.me/1234567890" class="order-btn">Order Now</a>
+                            <a href="#featured" class="explore-btn">Explore Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 2 -->
+
+                <div class="slide">
+                    <video src="videos/VID-20250409-WA0012.mp4" autoplay muted loop class="slide-video"></video>
+                    <div class="slide-content">
+                        <h1 class="headline">Coffee Beans Journey</h1>
+                        <p class="subheadline">From farm to cup, discover the journey of our premium beans.</p>
+                        <div class="cta-buttons">
+                            <a href="https://wa.me/1234567890" class="order-btn">Order Now</a>
+                            <a href="#featured" class="explore-btn">Explore Now</a>
+                        </div>
+                    </div>
+                </div>
+
+               
+          
+                <!-- Slide 3 -->
+                <div class="slide">
+                    <video src="videos/VID-20250409-WA0011.mp4" autoplay muted loop class="slide-video"></video>
+                    <div class="slide-content">
+                        <h1 class="headline">Classic Coffee Roasting</h1>
+                        <p class="subheadline">Watch the magic happen as beans roast to perfection.</p>
+                        <div class="cta-buttons">
+                            <a href="https://wa.me/1234567890" class="order-btn">Order Now</a>
+                            <a href="#featured" class="explore-btn">Explore Now</a>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Slide 4 -->
+                <div class="slide">
+                    <video src="videos/VID-20250409-WA0010.mp4" autoplay muted loop class="slide-video"></video>
+                    <div class="slide-content">
+                        <h1 class="headline">Rich Espresso</h1>
+                        <p class="subheadline">Taste the essence of the best espresso coffee you’ll ever have.</p>
+                        <div class="cta-buttons">
+                            <a href="https://wa.me/1234567890" class="order-btn">Order Now</a>
+                            <a href="#featured" class="explore-btn">Explore Now</a>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Slide 5 -->
+                <div class="slide">
+                    <video src="videos/VID-20250409-WA0009.mp4" autoplay muted loop class="slide-video"></video>
+                    <div class="slide-content">
+                        <h1 class="headline">Brew the Perfect Cup</h1>
+                        <p class="subheadline">Learn how to brew the perfect cup every time with our guide.</p>
+                        <div class="cta-buttons">
+                            <a href="https://wa.me/1234567890" class="order-btn">Order Now</a>
+                            <a href="#featured" class="explore-btn">Explore Now</a>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Slide 6 -->
+                <div class="slide">
+                    <video src="videos/VID-20250409-WA0006.mp4" autoplay muted loop class="slide-video"></video>
+                    <div class="slide-content">
+                        <h1 class="headline">Aromatic Coffee Moments</h1>
+                        <p class="subheadline">Indulge in the captivating aroma of freshly brewed coffee.</p>
+                        <div class="cta-buttons">
+                            <a href="https://wa.me/1234567890" class="order-btn">Order Now</a>
+                            <a href="#featured" class="explore-btn">Explore Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Navigation Arrows -->
+            <div class="nav-buttons">
+                <button class="prev-btn">&#10094;</button>
+                <button class="next-btn">&#10095;</button>
+            </div>
+        </div>
+    </section>
+    
+    <section class="featured-products" id="featured">
+        <h2 class="section-title"><img src="images/IMG-20250409-WA0081_prev_ui.png" alt="image of a coffee splash" class="coffesplash">Featured Coffee</h2>
+        <div class="products-container">
+
+              <!-- Product 1 -->
+<div class="product-card" data-id="7" data-title="Hazelnut Heaven" data-price="1800">
+    <img src="images/close-up-glass-cappucino-with-coffee-beans.jpg" alt="Hazelnut Heaven">
+    <h3>Hazelnut Heaven</h3>
+    <p>Nutty, aromatic coffee infused with creamy hazelnut delight.</p>
+    <div class="product-footer">
+      <span class="price">₦1800</span>
+      <div class="product-buttons">
+        <a href="https://wa.me/2348138422068" target="_blank" class="shop-now">Shop Now</a>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+         
+  
+  <!-- Product 2 -->
+  <div class="product-card" data-id="3" data-title="Mocha Bliss" data-price="1700">
+    <img src="images/iced-coffee-with-whipped-cream.jpg" alt="Mocha Bliss">
+    <h3>Mocha Bliss</h3>
+    <p>A chocolatey twist on classic coffee – rich, indulgent, and satisfying.</p>
+    <div class="product-footer">
+      <span class="price">₦1700</span>
+      <div class="product-buttons">
+        <a href="https://wa.me/2348138422068" target="_blank" class="shop-now">Shop Now</a>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Product 3 -->
+  <div class="product-card" data-id="4" data-title="Vanilla Latte" data-price="1400">
+    <img src="images/coffee.jpg" alt="Vanilla Latte">
+    <h3>Vanilla Latte</h3>
+    <p>Classic espresso with a creamy blend of vanilla and steamed milk.</p>
+    <div class="product-footer">
+      <span class="price">₦1400</span>
+      <div class="product-buttons">
+        <a href="https://wa.me/2348138422068" target="_blank" class="shop-now">Shop Now</a>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Product 4 -->
+  <div class="product-card" data-id="5" data-title="Iced Americano" data-price="1300">
+    <img src="images/skylar-michael-m3qdvRXKlUc-unsplash.jpg" alt="Iced Americano">
+    <h3>Iced Americano</h3>
+    <p>Cool and refreshing espresso served over ice with a splash of water.</p>
+    <div class="product-footer">
+      <span class="price">₦1300</span>
+      <div class="product-buttons">
+        <a href="https://wa.me/2348138422068" target="_blank" class="shop-now">Shop Now</a>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product 5 -->
+<div class="product-card" data-id="1" data-title="Espresso Delight" data-price="1200">
+    <img src="images/side-view-chocolate-milkshake-with-whipped-cream-glass-wooden-table.jpg" alt="Espresso Delight">
+    <h3>Espresso Delight</h3>
+    <p>Bold, rich, and smooth espresso made with the finest beans.</p>
+    <div class="product-footer">
+      <span class="price">₦1200</span>
+      <div class="product-buttons">
+        <a href="https://wa.me/2348138422068" target="_blank" class="shop-now">Shop Now</a>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Product 6 -->
+  <div class="product-card" data-id="8" data-title="Coconut Cold Brew" data-price="1900">
+    <img src="images/mayur-vP9TjdIm9fE-unsplash.jpg">
+    <h3>Coconut Cold Brew</h3>
+    <p>Cool and exotic—cold brew coffee kissed with tropical coconut flavor.</p>
+    <div class="product-footer">
+      <span class="price">₦1900</span>
+      <div class="product-buttons">
+        <a href="https://wa.me/2348138422068" target="_blank" class="shop-now">Shop Now</a>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+   <!-- Product 7 -->
+   <div class="product-card" data-id="2" data-title="Caramel Macchiato" data-price="1500">
+    <img src="images/glass-foamy-cold-coffee-with-whipped-cream-chocolate-wooden-plate.jpg" alt="Caramel Macchiato">
+    <h3>Caramel Macchiato</h3>
+    <p>Sweet caramel blended with creamy espresso and velvety milk foam.</p>
+    <div class="product-footer">
+      <span class="price">₦1500</span>
+      <div class="product-buttons">
+        <a href="https://wa.me/2348138422068" target="_blank" class="shop-now">Shop Now</a>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product 8 -->
+  <div class="product-card" data-id="6" data-title="Cappuccino Supreme" data-price="1600">
+    <img src="images/view-3d-coffee-cup.jpg" alt="Cappuccino Supreme">
+    <h3>Cappuccino Supreme</h3>
+    <p>Rich espresso, frothy milk, and perfect foam topped with cocoa dust.</p>
+    <div class="product-footer">
+      <span class="price">₦1600</span>
+      <div class="product-buttons">
+        <a href="https://wa.me/2348138422068" target="_blank" class="shop-now">Shop Now</a>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+  
+  
+        </div>
+      </section>
+
+      <section id="product-list" class="product-list">
+        <h2><img src="images/IMG-20250409-WA0079_prev_ui.png" alt="image of a coffee splash" class="coffesplash2">Our Products</h2>
+        <div class="filters">
+          <select id="price-filter">
+            <option value="all">All Prices</option>
+            <option value="low-to-high">Price: Low to High</option>
+            <option value="high-to-low">Price: High to Low</option>
+          </select>
+          <select id="rating-filter">
+            <option value="all">All Ratings</option>
+            <option value="4-and-above">4 stars & above</option>
+            <option value="5-stars">5 stars only</option>
+          </select>
+        </div>
+      
+        <div class="product-cards" id="product-cards">
+            <!-- Product 1 -->
+            <div class="product-card" data-title="Premium Arabica Coffee" data-price="3500" data-rating="4">
+              <img src="images/eugene-chystiakov-65u8lyVsQMo-unsplash.jpg" alt="Coffee 1" class="product-image">
+              <h3 class="product-title">Premium Arabica Coffee</h3>
+              <p class="product-description">Smooth, rich, and flavorful coffee made from the finest Arabica beans.</p>
+              <p class="product-price">₦3,500</p>
+              <div class="product-rating">
+                ★★★★☆
+              </div>
+              <button class="add-to-cart" data-product="Premium Arabica Coffee" data-price="3500">Add to Cart</button>
+            </div>
+          
+            <!-- Product 2 -->
+            <div class="product-card" data-title="Espresso Blend" data-price="4200" data-rating="5">
+              <img src="images/side-view-chocolate-milkshake-with-whipped-cream-glass-wooden-table.jpg" alt="Espresso Blend" class="product-image">
+              <h3 class="product-title">Espresso Blend</h3>
+              <p class="product-description">A bold and intense espresso blend for a strong and energizing coffee experience.</p>
+              <p class="product-price">₦4,200</p>
+              <div class="product-rating">
+                ★★★★★
+              </div>
+              <button class="add-to-cart" data-product="Espresso Blend" data-price="4200">Add to Cart</button>
+            </div>
+          
+            <!-- Product 3 -->
+            <div class="product-card" data-title="Vanilla Latte" data-price="3800" data-rating="5">
+              <img src="images/coffee.jpg" alt="Vanilla Latte" class="product-image">
+              <h3 class="product-title">Vanilla Latte</h3>
+              <p class="product-description">A smooth and creamy vanilla latte with a perfect blend of espresso, milk, and vanilla flavor.</p>
+              <p class="product-price">₦3,800</p>
+              <div class="product-rating">
+                ★★★★★
+              </div>
+              <button class="add-to-cart" data-product="Vanilla Latte" data-price="3800">Add to Cart</button>
+            </div>
+          
+            <!-- Product 4 -->
+            <div class="product-card" data-title="Hazelnut Coffee" data-price="4000" data-rating="4">
+              <img src="images/close-up-glass-cappucino-with-coffee-beans.jpg" alt="Hazelnut Coffee" class="product-image">
+              <h3 class="product-title">Hazelnut Coffee</h3>
+              <p class="product-description">A delicious hazelnut-flavored coffee that combines the rich taste of coffee with a nutty twist.</p>
+              <p class="product-price">₦4,000</p>
+              <div class="product-rating">
+                ★★★★☆
+              </div>
+              <button class="add-to-cart" data-product="Hazelnut Coffee" data-price="4000">Add to Cart</button>
+            </div>
+          
+            <!-- Product 5 -->
+            <div class="product-card" data-title="Mocha Coffee" data-price="4500" data-rating="5">
+              <img src="images/iced-coffee-with-whipped-cream.jpg" alt="Mocha Coffee" class="product-image">
+              <h3 class="product-title">Mocha Coffee</h3>
+              <p class="product-description">A delightful blend of coffee, chocolate, and cream for a rich and indulgent treat.</p>
+              <p class="product-price">₦4,500</p>
+              <div class="product-rating">
+                ★★★★★
+              </div>
+              <button class="add-to-cart" data-product="Mocha Coffee" data-price="4500">Add to Cart</button>
+            </div>
+
+              <!-- Product 6 -->
+              <div class="product-card" data-title="Decaf Coffee" data-price="3000" data-rating="3">
+                <img src="images/selective-focus-shot-tasty-chocolate-milkshake.jpg" alt="Decaf Coffee" class="product-image">
+                <h3 class="product-title">Decaf Coffee</h3>
+                <p class="product-description">A smooth and rich decaf coffee for those who prefer less caffeine without compromising on taste.</p>
+                <p class="product-price">₦3,000</p>
+                <div class="product-rating">
+                  ★★★☆☆
+                </div>
+                <button class="add-to-cart" data-product="Decaf Coffee" data-price="3000">Add to Cart</button>
+              </div>
+
+               <!-- Product 7 -->
+            <div class="product-card" data-title="Cappuccino" data-price="3200" data-rating="4">
+                <img src="images/view-3d-coffee-cup.jpg" alt="Cappuccino" class="product-image">
+                <h3 class="product-title">Cappuccino</h3>
+                <p class="product-description">A perfectly balanced cappuccino with a strong espresso base and creamy froth.</p>
+                <p class="product-price">₦3,200</p>
+                <div class="product-rating">
+                  ★★★★☆
+                </div>
+                <button class="add-to-cart" data-product="Cappuccino" data-price="3200">Add to Cart</button>
+              </div>
+            
+              <!-- Product 8 -->
+              <div class="product-card" data-title="Cold Brew Coffee" data-price="2800" data-rating="4">
+                <img src="images/markus-winkler-W-H1YySvo3Q-unsplash.jpg" alt="Cold Brew Coffee" class="product-image">
+                <h3 class="product-title">Cold Brew Coffee</h3>
+                <p class="product-description">Cool and refreshing cold brew coffee made for the summer, with a smooth and sweet taste.</p>
+                <p class="product-price">₦2,800</p>
+                <div class="product-rating">
+                  ★★★★☆
+                </div>
+                <button class="add-to-cart" data-product="Cold Brew Coffee" data-price="2800">Add to Cart</button>
+              </div>
+          </div>
+          
+          <!-- Cart notification section -->
+          <div id="cart-notification" class="cart-notification"></div>
+          
+      <!-- Testimonials Section -->
+<section id="testimonials" class="testimonials-section">
+    <h2><img src="images/coffee-pen-2_prev_ui.png" alt="image of a coffee splash" class="coffesplash3">What Our Customers Say<img src="images/coffee-pen-2_prev_ui.png" alt="image of a coffee splash" class="coffesplash4"></h2>
+    <div class="testimonials-container">
+      <div class="testimonial-card">
+        <img src="images/IMG-20250209-WA0002.jpg" alt="Customer 1">
+        <p>"Absolutely love the aroma and taste. The best coffee shop online!"</p>
+        <h4>- Mary A.</h4>
+        <div class="stars">★★★★★</div>
+      </div>
+      <div class="testimonial-card">
+        <img src="images/IMG-20250209-WA0006.jpg" alt="Customer 2">
+        <p>"Prompt delivery and rich flavors. I highly recommend them!"</p>
+        <h4>- James B.</h4>
+        <div class="stars">★★★★★</div>
+      </div>
+      <div class="testimonial-card">
+        <img src="images/IMG-20250127-WA0016.jpg" alt="Customer 3">
+        <p>"Smooth ordering experience, and the coffee? Simply divine!"</p>
+        <h4>- Linda O.</h4>
+        <div class="stars">★★★★☆</div>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- Call-to-Action Section -->
+<section class="cta-section">
+    <div class="cta-content">
+      <h2>Ready to Sip the Best Coffee of Your Life?</h2>
+      <p>Order now or explore our rich coffee collection tailored to your taste!</p>
+      <div class="cta-buttons">
+        <a href="https://wa.me/2348138422068" target="_blank" class="cta-btn">Order Now</a>
+        <a href="#featured" class="cta-btn cta-outline">View Menu</a>
+      </div>
+    </div>
+  </section>
+  
+      <!-- Footer Section -->
+<footer class="site-footer" id="site-footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <h3>CoffeeHub</h3>
+        <p>Your daily dose of freshly brewed happiness ☕</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#featured">Products</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#site-footer">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>Email: hello@Brew&You.com</p>
+        <p>Phone: +234 813 842 2068</p>
+        <div class="social-icons">
+          <a href="#"><i class='bx bxl-facebook'></i></a>
+          <a href="#"><i class='bx bxl-instagram'></i></a>
+          <a href="#"><i class='bx bxl-twitter'></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Brew & You. All rights reserved.</p>
+    </div>
+  </footer>
+  
+
+  <script src="Brew&You.js"></script>
+</body>
+</html>
