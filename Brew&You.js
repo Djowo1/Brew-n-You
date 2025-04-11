@@ -36,7 +36,6 @@ document.querySelector('.next-btn').addEventListener('click', () => {
     showSlide(currentIndex);
 });
 
-// Initialize the first slide
 showSlide(currentIndex);
 
 const cart = [];
@@ -152,7 +151,7 @@ function filterNotifications(filter) {
   });
 }
 
-// Ensure both cart and notification icons toggle correctly
+// My Codes to ensure both cart and notification icons toggle correctly
 cartIcon.addEventListener("click", () => {
   cartDropdown.style.display = cartDropdown.style.display === "block" ? "none" : "block";
   notificationPage.style.display = "none";
@@ -177,7 +176,7 @@ window.addEventListener("scroll", () => {
   }
 });
 
-// Sample product list
+
 const products = [
     { name: "Premium Arabica Coffee", price: 3500, rating: 4 },
     { name: "Espresso Blend", price: 4200, rating: 5 },
@@ -235,17 +234,17 @@ function filterProducts() {
 
 // Clear all notifications
 function clearAllNotifications() {
-    notifications.length = 0; // Empty the notifications array
+    notifications.length = 0; 
     updateNotificationUI();
     addNotification("Notifications Cleared", "All notifications have been cleared.");
   }
   
   // Clear only read notifications
   function clearReadNotifications() {
-    // Remove all read notifications from the array
+    
     const unreadNotifications = notifications.filter(n => !n.read);
-    notifications.length = 0; // Reset notifications array
-    notifications.push(...unreadNotifications); // Re-add only unread notifications
+    notifications.length = 0; 
+    notifications.push(...unreadNotifications); 
     updateNotificationUI();
     addNotification("Read Notifications Cleared", "All read notifications have been cleared.");
   }
