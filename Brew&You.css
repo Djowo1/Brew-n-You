@@ -201,7 +201,7 @@
   
   /* Hero Section */
   .hero {
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     overflow: hidden;
     position: relative;
@@ -248,7 +248,7 @@
     text-align: center;
     z-index: 10;
     opacity: 0;
-    animation: fadeIn 2s ease-out forwards, slideIn 1s ease-out 0.5s forwards;
+    animation: fadeIn 2s ease-out forwards, slideIn .5s ease-out 0.5s forwards;
 }
 
 @keyframes fadeIn {
