@@ -3,7 +3,7 @@ const navLinks = document.getElementById("navLinks");
 
 hamburger.addEventListener("click", () => {
   navLinks.classList.toggle("show");
-  hamburger.classList.toggle("active"); // this will animate the hamburger to X
+  hamburger.classList.toggle("active"); 
 });
 
 const slides = document.querySelectorAll('.slide');
@@ -164,7 +164,7 @@ notificationIcon.addEventListener("click", () => {
 
 // Navbar Scroll Effect
 const navbar = document.querySelector(".navbar");
-const featuredSection = document.querySelector("#featured"); // Assuming this is the ID of the Featured Product Section
+const featuredSection = document.querySelector("#featured");
 
 window.addEventListener("scroll", () => {
   if (window.scrollY >= featuredSection.offsetTop - 100) {
