@@ -862,6 +862,22 @@ background-color: rgba(255, 255, 255, 0.1);
   }
   
 
+  #price-filter {
+    border-radius: 20px;
+    height: 30px;
+    background-color: #351702;
+    color: white;
+    text-align: center;
+  }
+
+  #rating-filter {
+    border-radius: 20px;
+    height: 30px;
+    background-color: #351702;
+    color: white;
+    text-align: center;
+  }
+
   @media screen and (max-width: 900px) {
     .product-cards {
         display: grid;

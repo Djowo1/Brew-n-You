@@ -177,31 +177,9 @@ window.addEventListener("scroll", () => {
 });
 
 
-const products = [
-    { name: "Premium Arabica Coffee", price: 3500, rating: 4 },
-    { name: "Espresso Blend", price: 4200, rating: 5 },
-    { name: "Decaf Coffee", price: 3000, rating: 4 },
-    { name: "Cold Brew Coffee", price: 2800, rating: 4 },
-    { name: "Vanilla Latte", price: 3800, rating: 5 },
-    { name: "Hazelnut Coffee", price: 4000, rating: 4 },
-    { name: "Cappuccino", price: 3200, rating: 4 },
-    { name: "Mocha Coffee", price: 4500, rating: 5 },
-];
-
-// Add to Cart functionality
-const addToCartButtons = document.querySelectorAll('.add-to-cart');
-addToCartButtons.forEach(button => {
-  button.addEventListener('click', function () {
-    const productName = this.getAttribute('data-product');
-    const productPrice = parseInt(this.getAttribute('data-price'));
-    
- 
-  });
-});
-
-// Filter products by price and rating
 const priceFilter = document.getElementById('price-filter');
 const ratingFilter = document.getElementById('rating-filter');
+const productCards = document.querySelectorAll('.product-card');
 
 priceFilter.addEventListener('change', filterProducts);
 ratingFilter.addEventListener('change', filterProducts);
@@ -210,27 +188,72 @@ function filterProducts() {
   const priceValue = priceFilter.value;
   const ratingValue = ratingFilter.value;
 
-  const filteredProducts = products.filter(product => {
+  productCards.forEach(card => {
+    const cardPrice = parseInt(card.getAttribute('data-price'));
+    const cardRating = parseInt(card.getAttribute('data-rating'));
+
     let priceMatch = true;
     let ratingMatch = true;
 
+    if (ratingValue === '4-and-above' && cardRating < 4) {
+      ratingMatch = false;
+    } else if (ratingValue === '5-stars' && cardRating !== 5) {
+      ratingMatch = false;
+    } else if (ratingValue === '4-stars' && cardRating !== 4) {
+      ratingMatch = false;
+    }
+    
+
     if (priceValue === 'low-to-high') {
-      products.sort((a, b) => a.price - b.price);
+      // Don't filter, just sort later
     } else if (priceValue === 'high-to-low') {
-      products.sort((a, b) => b.price - a.price);
+      // Don't filter, just sort later
+    } else if (priceValue === 'under-3000') {
+      if (cardPrice >= 3000) priceMatch = false;
+    } else if (priceValue === '3000-4000') {
+      if (cardPrice < 3000 || cardPrice > 4000) priceMatch = false;
+    } else if (priceValue === 'above-4000') {
+      if (cardPrice <= 4000) priceMatch = false;
     }
 
-    if (ratingValue === '4-and-above' && product.rating < 4) {
-      ratingMatch = false;
-    } else if (ratingValue === '5-stars' && product.rating !== 5) {
-      ratingMatch = false;
+    if (priceMatch && ratingMatch) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
     }
-
-    return priceMatch && ratingMatch;
   });
 
-  renderProducts(filteredProducts);
+  // Sort products
+  if (priceValue === 'low-to-high') {
+    sortProducts('price', 'asc');
+  } else if (priceValue === 'high-to-low') {
+    sortProducts('price', 'desc');
+  }
 }
+
+function sortProducts(attribute, order) {
+  const productContainer = document.getElementById('product-cards');
+  const products = Array.from(productContainer.children);
+
+  products.sort((a, b) => {
+    if (attribute === 'price') {
+      const priceA = parseInt(a.getAttribute('data-price'));
+      const priceB = parseInt(b.getAttribute('data-price'));
+
+      if (order === 'asc') {
+        return priceA - priceB;
+      } else {
+        return priceB - priceA;
+      }
+    }
+  });
+
+  productContainer.innerHTML = '';
+  products.forEach(product => productContainer.appendChild(product));
+}
+
+
+
 
 // Clear all notifications
 function clearAllNotifications() {
