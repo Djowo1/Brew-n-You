@@ -179,7 +179,7 @@ window.addEventListener("scroll", () => {
 
 const priceFilter = document.getElementById('price-filter');
 const ratingFilter = document.getElementById('rating-filter');
-const productCards = document.querySelectorAll('.product-card');
+const productList = document.getElementById('product-cards');
 
 priceFilter.addEventListener('change', filterProducts);
 ratingFilter.addEventListener('change', filterProducts);
@@ -188,27 +188,25 @@ function filterProducts() {
   const priceValue = priceFilter.value;
   const ratingValue = ratingFilter.value;
 
-  productCards.forEach(card => {
+  const productCards = productList.children;
+
+  Array.from(productCards).forEach(card => {
     const cardPrice = parseInt(card.getAttribute('data-price'));
     const cardRating = parseInt(card.getAttribute('data-rating'));
 
     let priceMatch = true;
     let ratingMatch = true;
 
-    if (ratingValue === '4-and-above' && cardRating < 4) {
-      ratingMatch = false;
-    } else if (ratingValue === '5-stars' && cardRating !== 5) {
-      ratingMatch = false;
-    } else if (ratingValue === '4-stars' && cardRating !== 4) {
-      ratingMatch = false;
+    // Apply filters
+    if (ratingValue === '4-and-above') {
+      if (cardRating < 4) ratingMatch = false;
+    } else if (ratingValue === '5-stars') {
+      if (cardRating !== 5) ratingMatch = false;
+    } else if (ratingValue === '4-stars') {
+      if (cardRating !== 4) ratingMatch = false;
     }
-    
 
-    if (priceValue === 'low-to-high') {
-      // Don't filter, just sort later
-    } else if (priceValue === 'high-to-low') {
-      // Don't filter, just sort later
-    } else if (priceValue === 'under-3000') {
+    if (priceValue === 'under-3000') {
       if (cardPrice >= 3000) priceMatch = false;
     } else if (priceValue === '3000-4000') {
       if (cardPrice < 3000 || cardPrice > 4000) priceMatch = false;
@@ -232,8 +230,7 @@ function filterProducts() {
 }
 
 function sortProducts(attribute, order) {
-  const productContainer = document.getElementById('product-cards');
-  const products = Array.from(productContainer.children);
+  const products = Array.from(productList.children);
 
   products.sort((a, b) => {
     if (attribute === 'price') {
@@ -248,9 +245,11 @@ function sortProducts(attribute, order) {
     }
   });
 
-  productContainer.innerHTML = '';
-  products.forEach(product => productContainer.appendChild(product));
+  productList.innerHTML = '';
+  products.forEach(product => productList.appendChild(product));
 }
+
+
 
 
 
