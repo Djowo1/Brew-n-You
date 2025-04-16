@@ -162,6 +162,10 @@
     gap: 10px;
   }
   
+  .brand:hover {
+    cursor: pointer;
+  }
+  
   .logo {
     width: 40px;
     height: 40px;
