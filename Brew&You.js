@@ -249,11 +249,6 @@ function sortProducts(attribute, order) {
   products.forEach(product => productList.appendChild(product));
 }
 
-
-
-
-
-
 // Clear all notifications
 function clearAllNotifications() {
     notifications.length = 0; 

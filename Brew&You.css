@@ -161,10 +161,10 @@
     align-items: center;
     gap: 10px;
   }
-  
-  .brand:hover {
-    cursor: pointer;
-  }
+
+.brand a {
+  text-decoration: none;
+}
   
   .logo {
     width: 40px;
